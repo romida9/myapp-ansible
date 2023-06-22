@@ -1,0 +1,21 @@
+---
+- name: installmyapp
+  debug: 
+- name: Download wordpress
+  ansible.builtin.get_url:
+    url: https://wordpress.org/wordpress-6.2.2.tar.gz
+    dest: /tmp
+- name: Extract wordpress
+  ansible.builtin.unarchive:
+    src: /tmp/wordpress-6.2.2.tar.gz
+    dest: /var/www/html
+    remote_src: yes
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: /var/www/html/wordpress/
+    dest: /var/www/html/
+    remote_src: yes
+- name: Remove file (delete file)
+  ansible.builtin.file:
+    path: /var/www/html/index.html
+    state: absent

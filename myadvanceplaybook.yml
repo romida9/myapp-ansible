@@ -1,0 +1,26 @@
+---
+- name: my hello world
+  become: yes
+  gather_facts: yes
+  hosts: all 
+  roles: 
+    - role: 'geerlingguy.apache'
+    - role: 'geerlingguy.php'
+    - role: 'geerlingguy.php-mysql'
+    - role: 'geerlingguy.mysql'
+    - role: 'myapp'
+
+  vars_files: 
+    - romida.yml
+
+  tasks: 
+  
+  - name: Copy wp-config.php
+    ansible.builtin.copy:
+      src: wp-config.php
+      dest: /var/www/html/
+  - name: Copy info.php
+    ansible.builtin.copy:
+      src: info.php
+      dest: /var/www/html/
+    
