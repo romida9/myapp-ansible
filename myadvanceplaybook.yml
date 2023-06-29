@@ -7,7 +7,6 @@
     - role: 'geerlingguy.apache'
     - role: 'geerlingguy.php'
     - role: 'geerlingguy.php-mysql'
-    - role: 'geerlingguy.mysql'
     - role: 'myapp'
 
   vars_files: 
