@@ -15,7 +15,7 @@
   tasks: 
   
   - name: Copy wp-config.php
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: wp-config.php
       dest: /var/www/html/
   - name: Copy info.php
